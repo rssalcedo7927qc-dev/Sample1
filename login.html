@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LogIn</title>
+    <style>
+        * {
+            font-family: Arial, Helvetica, sans-serif;
+            color: white;
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 15px;
+            background-image: url(images/BgLoginReduce.jpg);
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container-1 {
+            border: 2px solid rgb(0, 140, 255);
+            border-radius: 20px;
+            background-color: #040130;
+            width: 100%;
+            max-width: 600px;
+            padding: 20px;
+            position: relative;
+        }
+
+        .prof {
+            text-align: center;
+            padding-top: 20px;
+            margin-bottom: 15px;
+        }
+
+        .profImage {
+            border-radius: 100px;
+            width: 140px;
+            height: auto;
+            max-width: 100%;
+        }
+
+        .container-2 {
+            border-radius: 10px;
+            margin-top: 10px;
+        }
+
+        .head {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+
+        .head p {
+            font-size: 26px;
+            font-weight: 600;
+            margin: 0;
+        }
+
+        .v-line {
+            width: 1px;
+            height: 30px;
+            background-color: white;
+            border: none;
+            margin: 0 5px;
+        }
+        
+        .logo-img {
+            height: 35px;
+            vertical-align: middle;
+            border-radius: 20px;
+        }
+
+        .logoname {
+            font-size: 24px;
+            font-weight: 600;
+            margin: 0;
+        }
+
+        .username-input {
+            padding: 0 20px;
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-size: 15px;
+            font-weight: 600;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .usernamePass-class {
+            margin-bottom: 15px;
+            padding: 0 20px;
+            width: 100%;
+            height: 42px;
+            border-radius: 12px;
+            border: 1px solid black;
+            background-color: #0a3066;
+            font-size: 14px;
+        }
+       
+        .usernamePass-class:-webkit-autofill,
+        .usernamePass-class:-webkit-autofill:hover, 
+        .usernamePass-class:-webkit-autofill:focus, 
+        .usernamePass-class:-webkit-autofill:active {
+            box-shadow: 0 0 0 1000px #0a3066 inset !important;
+            -webkit-box-shadow: 0 0 0 1000px #0a3066 inset !important;
+            -webkit-text-fill-color: white !important;
+            color: white !important;
+            border: 1px solid black !important;
+        }
+
+        input::placeholder {
+            color: rgb(214, 195, 195);
+        }
+
+        .footer1 {
+            font-size: 13px;
+            padding: 0 20px;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .forgot-pass {
+            text-decoration: underline;
+            color: #d3d3d3;
+            transition: color 0.3s ease;
+        }
+
+        .forgot-pass:hover {
+            color: rgb(0, 140, 255);
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        .sign-up {
+            text-decoration: underline;
+            color: #d3d3d3;
+            transition: color 0.3s ease;
+        }
+
+        .sign-up:hover {
+            color: rgb(0, 140, 255);
+        }
+
+        .dont-have-an-acc {
+            color: #d3d3d3;
+        }
+
+        .btn {
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            padding: 12px 20px;
+            border-radius: 12px;
+            margin-bottom: 15px;
+            width: 100%;
+            border: 1px solid black;
+            color: white;
+            background-color: #230a87;
+            transition: all 0.3s ease;
+        }
+       
+        .btn:hover {
+            background-color: #33078b;
+            transform: translateY(-2px);
+        }
+       
+        .close-x-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 26px;
+            cursor: pointer;
+            width: 35px;
+            height: 35px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            z-index: 10;
+            padding: 0;
+        }
+       
+        .close-x-btn:hover {
+            background-color: rgba(255, 2, 2, 0.2);
+            transform: none;
+        }
+
+        #errorMessage {
+            color: #ff4d4d;
+            font-weight: 600;
+            text-align: center;
+            margin-bottom: 12px;
+            font-size: 14px;
+            min-height: 20px;
+        }
+
+        /* Mobile responsiveness */
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+
+            .container-1 {
+                padding: 15px;
+                border-radius: 15px;
+            }
+
+            .prof {
+                padding-top: 15px;
+                margin-bottom: 10px;
+            }
+
+            .profImage {
+                width: 120px;
+            }
+
+            .head p {
+                font-size: 22px;
+            }
+
+            .v-line {
+                display: none;
+            }
+
+            .logo-img {
+                height: 30px;
+            }
+
+            .logoname {
+                font-size: 22px;
+            }
+
+            .username-input {
+                padding: 0 15px;
+            }
+
+            label {
+                font-size: 14px;
+            }
+
+            .usernamePass-class {
+                height: 40px;
+                font-size: 14px;
+                padding: 0 15px;
+            }
+
+            .btn {
+                font-size: 15px;
+                padding: 11px 15px;
+            }
+
+            .footer1 {
+                font-size: 12px;
+                padding: 0 15px;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 8px;
+            }
+
+            #errorMessage {
+                font-size: 13px;
+            }
+
+            .close-x-btn {
+                width: 30px;
+                height: 30px;
+                font-size: 22px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 5px;
+            }
+
+            .container-1 {
+                padding: 12px;
+            }
+
+            .prof {
+                padding-top: 10px;
+            }
+
+            .profImage {
+                width: 100px;
+            }
+
+            .head p {
+                font-size: 20px;
+            }
+
+            .logo-img {
+                height: 28px;
+            }
+
+            .logoname {
+                font-size: 20px;
+            }
+
+            .username-input {
+                padding: 0 12px;
+            }
+
+            label {
+                font-size: 13px;
+                margin-bottom: 6px;
+            }
+
+            .usernamePass-class {
+                height: 38px;
+                font-size: 13px;
+                padding: 0 12px;
+                margin-bottom: 12px;
+            }
+
+            input::placeholder {
+                font-size: 13px;
+            }
+
+            .btn {
+                font-size: 14px;
+                padding: 10px 12px;
+            }
+
+            .footer1 {
+                font-size: 11px;
+                padding: 0 12px;
+            }
+
+            #errorMessage {
+                font-size: 12px;
+            }
+        }
+
+        @media (max-width: 360px) {
+            .profImage {
+                width: 90px;
+            }
+
+            .head p {
+                font-size: 18px;
+            }
+
+            .logoname {
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container-1">
+        <button class="close-x-btn" onclick="window.location.href='home.html'" title="Close">×</button>
+        <div class="prof">
+            <img class="profImage" src="images/navProfile-removebg-preview.png" alt="profileLogo">
+        </div>
+        <div class="container-2">
+            <form id="loginForm">
+                <div class="head">
+                    <p>Log In</p>
+                    <hr class="v-line">
+                    <img src="images/LogoFinal.png" alt="AGORA Logo" class="logo-img">
+                    <div class="logoname">AGORA</div>
+                </div>
+                
+                <div class="username-input">
+                    <div id="errorMessage"></div>
+                    
+                    <label for="usernameInput">Username | Email Address</label>
+                    <input type="text" class="usernamePass-class" id="usernameInput" name="username" placeholder="Username" required>
+
+                    <label for="passwordInput">Password</label>
+                    <input type="password" class="usernamePass-class" id="passwordInput" name="pass" placeholder="Password" required>
+                    
+                    <button class="btn" type="submit">Log In</button>
+                </div>
+
+                <div class="footer1">
+                    <a class="dont-have-an-acc sign-up" href="signUp.html">Don't have an account?</a>
+                    <a class="forgot-pass" href="forgotPassword.html">Forgot Password</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
+            event.preventDefault(); 
+
+            const usernameOrEmail = document.getElementById('usernameInput').value.trim().toLowerCase();
+            const password = document.getElementById('passwordInput').value.trim();
+            const errorDisplay = document.getElementById('errorMessage');
+
+            errorDisplay.textContent = ''; 
+
+            // Get registered users from localStorage
+            const users = JSON.parse(localStorage.getItem('registeredUsers') || '[]');
+            
+            // Also check for hardcoded admin account (for backward compatibility)
+            const correctEmail = 'admin@gmail.com';
+            const correctPassword = '123456789';
+            
+            let isValidUser = false;
+            let currentUser = null;
+            
+            // Check hardcoded admin account first
+            if (usernameOrEmail === correctEmail.toLowerCase() && password === correctPassword) {
+                isValidUser = true;
+                currentUser = { username: 'admin', email: correctEmail };
+            } else {
+                // Check against registered users
+                const foundUser = users.find(user => 
+                    (user.username.toLowerCase() === usernameOrEmail || 
+                     user.email.toLowerCase() === usernameOrEmail) &&
+                    user.password === password
+                );
+                
+                if (foundUser) {
+                    isValidUser = true;
+                    currentUser = { username: foundUser.username, email: foundUser.email };
+                }
+            }
+
+            if (isValidUser) {
+                // Set user as logged in
+                localStorage.setItem('isLoggedIn', 'true');
+                localStorage.setItem('currentUser', JSON.stringify(currentUser));
+                
+                // Successful login: Redirect to the homepage
+                window.location.href = 'home.html'; 
+            } else {
+                // Failed login: Display the error message in red
+                errorDisplay.textContent = 'Invalid username or password';
+                document.getElementById('passwordInput').value = ''; 
+                document.getElementById('usernameInput').focus();
+            }
+        });
+    </script>
+</body>
+</html>

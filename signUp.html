@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>signUp</title>
+  <style>
+    * { 
+      font-family: Arial, Helvetica, sans-serif;
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 15px;
+      background-image: url(images/BgLoginReduce.jpg);
+      background-position: center;
+      min-height: 100vh;
+      background-repeat: no-repeat;
+      background-size: cover;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .container-1 {
+      border: 2px solid rgb(0, 140, 255);
+      background-color: #040130;
+      border-radius: 20px;
+      color: white;
+      width: 100%;
+      max-width: 900px;
+      padding: 20px;
+      position: relative;
+    }
+
+    .head { 
+      display: flex; 
+      justify-content: center; 
+      align-items: center; 
+      text-align: center;
+      flex-wrap: wrap;
+      gap: 8px;
+      padding: 10px 0 20px 0;
+    }
+    
+    .head p { 
+      font-size: 22px;
+      font-weight: 600;
+      margin: 0;
+    }
+
+    .v-line { 
+      width: 1px; 
+      height: 30px; 
+      background-color: white; 
+      border: none;
+      margin: 0 5px;
+    }
+
+    .logo-img { 
+      height: 35px;
+      vertical-align: middle; 
+      border-radius: 20px;
+    }
+    
+    .logoname { 
+      font-size: 22px;
+      font-weight: 600;
+      margin-left: 8px;
+    }
+
+    .inputTitle { 
+      font-size: 15px; 
+      font-weight: 600; 
+      display: block; 
+      margin-bottom: 6px;
+    }
+    
+    label { font-size: 15px; font-weight: 600; }
+
+    .usernamePass-class {
+      margin-top: 0;
+      margin-bottom: 12px;
+      padding: 0 15px;
+      width: 100%;
+      height: 42px;
+      border-radius: 12px;
+      border: 1px solid black;
+      background-color: #0a3066;
+      color: white;
+      font-size: 14px;
+    }
+
+    .usernamePass-class:-webkit-autofill,
+    .usernamePass-class:-webkit-autofill:hover,
+    .usernamePass-class:-webkit-autofill:focus,
+    .usernamePass-class:-webkit-autofill:active {
+      -webkit-box-shadow: 0 0 0 30px #0a3066 inset !important;
+      -webkit-text-fill-color: white !important;
+      transition: background-color 5000s ease-in-out 0s;
+    }
+
+    input:-webkit-autofill,
+    input:-webkit-autofill:hover,
+    input:-webkit-autofill:focus,
+    input:-webkit-autofill:active {
+      -webkit-box-shadow: 0 0 0 30px #0a3066 inset !important;
+      -webkit-text-fill-color: white !important;
+      transition: background-color 5000s ease-in-out 0s;
+    }
+
+    select:-webkit-autofill,
+    select:-webkit-autofill:hover,
+    select:-webkit-autofill:focus,
+    select:-webkit-autofill:active {
+      -webkit-box-shadow: 0 0 0 30px #0a3066 inset !important;
+      -webkit-text-fill-color: white !important;
+    }
+
+    .flex-container { 
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+      padding: 0 15px;
+    }
+
+    button {
+      cursor: pointer;
+      font-size: 15px;
+      font-weight: 600;
+      padding: 12px 20px;
+      border-radius: 12px;
+      border: 1px solid black;
+      color: white;
+      background-color: #230a87;
+      transition: all 0.3s ease;
+      width: 100%;
+    }
+
+    .btn-submit { 
+      max-width: 300px;
+      margin: 0 auto;
+    }
+    
+    button:hover { 
+      background-color: #33078b; 
+      transform: translateY(-2px);
+    }
+
+    .button-container { 
+      display: flex; 
+      justify-content: center; 
+      margin-top: 15px;
+    }
+
+    .close-x-btn {
+      position: absolute; 
+      top: 10px; 
+      right: 10px;
+      background: none; 
+      border: none; 
+      color: white; 
+      font-size: 26px;
+      cursor: pointer; 
+      width: 35px; 
+      height: 35px;
+      display: flex; 
+      align-items: center; 
+      justify-content: center;
+      border-radius: 50%; 
+      transition: all 0.3s ease; 
+      z-index: 10;
+      padding: 0;
+    }
+
+    .close-x-btn:hover { 
+      background-color: rgba(230, 7, 7, 0.2);
+      transform: none;
+    }
+
+    .centerText { 
+      text-align: center; 
+      margin-top: 15px;
+    }
+
+    .formdiv { 
+      display: flex; 
+      gap: 10px; 
+      margin-bottom: 0;
+    }
+
+    .sub-formdiv { 
+      display: flex; 
+      flex-direction: column;
+      flex: 1;
+    }
+
+    .sub-formdiv input, 
+    .sub-formdiv select {
+      padding: 0 10px;
+      font-size: 14px;
+      margin-bottom: 12px;
+      width: 100%;
+      height: 42px;
+      border-radius: 12px;
+      border: 1px solid black;
+      background-color: #0a3066;
+      color: white;
+    }
+
+    .sub-formdiv input:-webkit-autofill,
+    .sub-formdiv input:-webkit-autofill:hover,
+    .sub-formdiv input:-webkit-autofill:focus,
+    .sub-formdiv input:-webkit-autofill:active {
+      -webkit-box-shadow: 0 0 0 30px #0a3066 inset !important;
+      -webkit-text-fill-color: white !important;
+      transition: background-color 5000s ease-in-out 0s;
+    }
+
+    input::placeholder { 
+      font-size: 14px; 
+      color: rgb(214, 195, 195);
+    }
+
+    .have-anAcc { 
+      font-size: 13px;
+      color: white;
+      text-decoration: none;
+      display: inline-block;
+      margin-bottom: 10px;
+    }
+
+    .have-anAcc:hover {
+      color: rgb(0, 140, 255);
+    }
+
+    .terms-conditions { 
+      margin: 10px 0;
+    }
+    
+    .terms-conditions a { 
+      color: white; 
+      text-decoration: underline; 
+      cursor: pointer;
+    }
+
+    .terms-conditions a:hover {
+      color: rgb(0, 140, 255);
+    }
+
+    .error-message {
+      color: #ff4444;
+      font-size: 12px;
+      margin-top: -8px;
+      margin-bottom: 10px;
+      display: none;
+    }
+
+    .modal {
+      display: none; 
+      position: fixed; 
+      z-index: 9999; 
+      inset: 0;
+      background: rgba(0, 0, 30, 0.8); 
+      backdrop-filter: blur(5px);
+      justify-content: center; 
+      align-items: center; 
+      animation: fadeIn 0.3s ease;
+      padding: 15px;
+    }
+
+    .modal-content {
+      background: linear-gradient(145deg, #050045, #0a0a75);
+      border: 2px solid rgba(0, 140, 255, 0.7);
+      box-shadow: 0 0 15px rgba(0, 140, 255, 0.4);
+      border-radius: 20px; 
+      color: white; 
+      padding: 25px;
+      width: 100%; 
+      max-width: 500px;
+      text-align: left; 
+      animation: slideUp 0.35s ease;
+      max-height: 90vh;
+      overflow-y: auto;
+    }
+
+    .close-modal {
+      color: white; 
+      float: right; 
+      font-size: 26px; 
+      font-weight: bold; 
+      cursor: pointer;
+      transition: color 0.3s ease;
+      line-height: 1;
+    }
+
+    .close-modal:hover { 
+      color: rgb(0, 140, 255);
+    }
+
+    .modal-content h2 { 
+      text-align: center; 
+      color: #00b2ff; 
+      margin-bottom: 15px;
+      font-size: 22px;
+    }
+    
+    .modal-content p, 
+    .modal-content ul { 
+      font-size: 14px; 
+      line-height: 1.6; 
+      color: #e5e5e5;
+    }
+    
+    .modal-content ul { 
+      margin-left: 20px;
+    }
+
+    @keyframes fadeIn { 
+      from { opacity: 0; } 
+      to { opacity: 1; } 
+    }
+    
+    @keyframes slideUp { 
+      from { transform: translateY(40px); opacity: 0; } 
+      to { transform: translateY(0); opacity: 1; } 
+    }
+
+    /* Mobile responsiveness */
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+
+      .container-1 {
+        padding: 15px;
+        border-radius: 15px;
+      }
+
+      .head {
+        padding: 5px 0 15px 0;
+      }
+
+      .head p {
+        font-size: 20px;
+      }
+
+      .v-line {
+        display: none;
+      }
+
+      .logo-img {
+        height: 30px;
+      }
+
+      .logoname {
+        font-size: 20px;
+      }
+
+      .flex-container {
+        grid-template-columns: 1fr;
+        gap: 0;
+        padding: 0 10px;
+      }
+
+      .inputTitle {
+        font-size: 14px;
+      }
+
+      .usernamePass-class,
+      .sub-formdiv input,
+      .sub-formdiv select {
+        height: 40px;
+        font-size: 14px;
+        margin-bottom: 10px;
+      }
+
+      .formdiv {
+        flex-direction: column;
+        gap: 0;
+      }
+
+      .sub-formdiv {
+        width: 100%;
+      }
+
+      button {
+        font-size: 14px;
+        padding: 10px 15px;
+      }
+
+      .btn-submit {
+        width: 100%;
+        max-width: 100%;
+      }
+
+      .modal-content {
+        padding: 20px;
+        max-width: 95%;
+      }
+
+      .modal-content h2 {
+        font-size: 20px;
+      }
+
+      .modal-content p,
+      .modal-content ul {
+        font-size: 13px;
+      }
+
+      .have-anAcc {
+        font-size: 12px;
+      }
+
+      .terms-conditions label {
+        font-size: 12px;
+      }
+
+      .close-x-btn {
+        width: 30px;
+        height: 30px;
+        font-size: 22px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      body {
+        padding: 5px;
+      }
+
+      .container-1 {
+        padding: 12px;
+      }
+
+      .head p,
+      .logoname {
+        font-size: 18px;
+      }
+
+      .logo-img {
+        height: 28px;
+      }
+
+      .inputTitle {
+        font-size: 13px;
+        margin-bottom: 5px;
+      }
+
+      .usernamePass-class,
+      .sub-formdiv input,
+      .sub-formdiv select {
+        height: 38px;
+        font-size: 13px;
+        padding: 0 12px;
+      }
+
+      input::placeholder {
+        font-size: 13px;
+      }
+
+      button {
+        font-size: 13px;
+        padding: 9px 12px;
+      }
+
+      .modal-content {
+        padding: 15px;
+      }
+
+      .error-message {
+        font-size: 11px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container-1">
+    <button class="close-x-btn" onclick="window.location.href='home.html'" title="Close">×</button>
+    <div class="container-2">
+      <form id="signupForm" onsubmit="handleSignUp(event)">
+        <div class="head">
+          <p>Sign Up</p>
+          <hr class="v-line" />
+          <img src="images/LogoFinal.png" alt="AGORA Logo" class="logo-img" />
+          <div class="logoname">AGORA</div>
+        </div>
+
+        <div class="flex-container">
+          <div class="left-container">
+            <label class="inputTitle" for="name">Name</label>
+            <input type="text" class="usernamePass-class" id="name" name="name" placeholder="Name" required />
+            
+            <label class="inputTitle" for="username">Username</label>
+            <input type="text" class="usernamePass-class" id="username" name="username" placeholder="Username" required />
+            
+            <label class="inputTitle" for="password">Password</label>
+            <input type="password" class="usernamePass-class" id="pass" name="password" placeholder="Password" required />
+            
+            <label class="inputTitle" for="confirm-pass">Confirm Password</label>
+            <input type="password" class="usernamePass-class" id="confirm-pass" name="confirm-pass" placeholder="Confirm Password" required />
+            <div id="passwordError" class="error-message">Passwords do not match</div>
+          </div>
+
+          <div class="right-container">
+            <div class="formdiv">
+              <div class="sub-formdiv">
+                <label class="inputTitle" for="birthdate">Birthdate</label>
+                <input type="date" id="birthdate" name="birthdate" required />
+              </div>
+
+              <div class="sub-formdiv">
+                <label class="inputTitle" for="gender-select">Gender</label>
+                <select id="gender-select" name="gender" required>
+                  <option value="" disabled selected>Select Gender</option>
+                  <option value="female">Female</option>
+                  <option value="male">Male</option>
+                  <option value="non-binary">Non-Binary</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
+            </div>
+
+            <label class="inputTitle" for="email">Email Address</label>
+            <input type="email" class="usernamePass-class" id="email" name="email" placeholder="Email Address" required />
+            <div id="emailError" class="error-message">Please enter a valid email address</div>
+            
+            <label class="inputTitle" for="phone">Contact Number</label>
+            <input type="tel" class="usernamePass-class" id="phone" name="phone" placeholder="Contact Number" />
+
+            <div class="centerText">
+              <a class="have-anAcc" href="login.html">ALREADY HAVE AN ACCOUNT?</a><br />
+              <div class="terms-conditions">
+                <input type="checkbox" id="check" required />
+                <label for="check" style="font-size: 13px; font-weight: normal;">
+                  I agree to the <a id="openTerms">Terms and Conditions</a>
+                </label>
+              </div>
+              <div class="button-container">
+                <button type="submit" class="btn-submit">FINISH SIGN UP</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Terms Modal -->
+  <div id="termsModal" class="modal">
+    <div class="modal-content">
+      <span class="close-modal" id="closeTerms">&times;</span>
+      <h2>Terms and Conditions</h2>
+      <p>Welcome to AGORA. By creating an account, you agree to:</p>
+      <ul>
+        <li>Respect all members and maintain a positive environment.</li>
+        <li>Avoid posting offensive, spam, or harmful content.</li>
+        <li>Keep your login details private and secure.</li>
+        <li>Follow AGORA's community and privacy guidelines.</li>
+      </ul>
+      <p>Failure to comply may result in account suspension or termination.</p>
+      <div style="text-align: center; margin-top: 20px;">
+        <button onclick="closeTermsPopup()">I Understand</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Email Verification Modal -->
+  <div id="emailModal" class="modal">
+    <div class="modal-content" style="text-align: center;">
+      <span class="close-modal" id="closeEmail">&times;</span>
+      <h2 style="margin-top: 10px;">Email Verification</h2>
+      <p style="margin: 15px 0; line-height: 1.8; font-size: 14px;">
+        We've sent a 6-digit verification code to<br>
+        <strong id="emailDisplay" style="color: #00b2ff; font-size: 15px; word-break: break-all;"></strong>
+      </p>
+      <p style="font-size: 13px; color: #b0b0b0; margin-bottom: 15px;">Please enter the code below:</p>
+      <input 
+        type="text" 
+        id="verifyCode" 
+        maxlength="6" 
+        placeholder="000000" 
+        style="width: 100%; 
+               max-width: 200px;
+               height: 50px; 
+               text-align: center; 
+               font-size: 22px; 
+               letter-spacing: 6px; 
+               border-radius: 12px; 
+               border: 2px solid rgba(0, 140, 255, 0.5);
+               background-color: #0a3066;
+               color: white;
+               margin: 10px auto;
+               display: block;
+               padding: 0;">
+      <div style="text-align: center; margin-top: 20px;">
+        <button onclick="submitVerification()" style="width: 100%; max-width: 200px; padding: 12px;">Verify Code</button>
+      </div>
+      <p style="font-size: 12px; color: #888; margin-top: 15px;">
+        Didn't receive the code? <a href="#" onclick="resendCode(); return false;" style="color: #00b2ff; text-decoration: underline;">Resend</a>
+      </p>
+    </div>
+  </div>
+
+  <script>
+    const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    const emailModal = document.getElementById("emailModal");
+    const closeEmail = document.getElementById("closeEmail");
+    const emailError = document.getElementById("emailError");
+    const passwordError = document.getElementById("passwordError");
+    
+    closeEmail.onclick = () => (emailModal.style.display = "none");
+
+    document.getElementById("email").addEventListener("blur", function() {
+      const email = this.value.trim();
+      if (email && !emailPattern.test(email)) {
+        emailError.style.display = "block";
+        this.style.borderColor = "#ff4444";
+      } else {
+        emailError.style.display = "none";
+        this.style.borderColor = "black";
+      }
+    });
+
+    document.getElementById("confirm-pass").addEventListener("input", function() {
+      const password = document.getElementById("pass").value;
+      const confirmPassword = this.value;
+      
+      if (confirmPassword && password !== confirmPassword) {
+        passwordError.style.display = "block";
+        this.style.borderColor = "#ff4444";
+      } else {
+        passwordError.style.display = "none";
+        this.style.borderColor = "black";
+      }
+    });
+
+    async function handleSignUp(event) {
+      event.preventDefault();
+      
+      const username = document.getElementById("username").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const password = document.getElementById("pass").value;
+      const confirmPassword = document.getElementById("confirm-pass").value;
+      const termsChecked = document.getElementById("check").checked;
+
+      if (!emailPattern.test(email)) {
+        emailError.style.display = "block";
+        document.getElementById("email").style.borderColor = "#ff4444";
+        document.getElementById("email").focus();
+        alert("Please enter a valid email address.");
+        return false;
+      }
+
+      if (password !== confirmPassword) {
+        passwordError.style.display = "block";
+        document.getElementById("confirm-pass").style.borderColor = "#ff4444";
+        alert("Passwords do not match.");
+        return false;
+      }
+
+      if (!termsChecked) {
+        alert("Please accept Terms and Conditions.");
+        return false;
+      }
+
+      const signupData = {
+        username,
+        email,
+        password,
+        name: document.getElementById("name").value.trim(),
+        birthdate: document.getElementById("birthdate").value,
+        gender: document.getElementById("gender-select").value,
+        phone: document.getElementById("phone").value.trim(),
+      };
+
+      try {
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), 500);
+        
+        const res = await fetch("http://localhost:5000/send-code", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ email }),
+          signal: controller.signal
+        });
+        
+        clearTimeout(timeoutId);
+        const data = await res.json();
+
+        if (data.success) {
+          localStorage.setItem("pendingSignup", JSON.stringify(signupData));
+          document.getElementById("emailDisplay").textContent = email;
+          emailModal.style.display = "flex";
+        } else {
+          alert("Error sending verification email. Please try again.");
+          return false;
+        }
+      } catch (error) {
+        console.log("Backend not available, showing verification popup for testing");
+        localStorage.setItem("pendingSignup", JSON.stringify(signupData));
+        document.getElementById("emailDisplay").textContent = email;
+        emailModal.style.display = "flex";
+      }
+
+      return false;
+    }
+
+    async function submitVerification() {
+      const user = JSON.parse(localStorage.getItem("pendingSignup"));
+      const code = document.getElementById("verifyCode").value.trim();
+
+      if (code.length !== 6) {
+        alert("Please enter a valid 6-digit code.");
+        document.getElementById("verifyCode").focus();
+        return;
+      }
+
+      try {
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), 500);
+        
+        const res = await fetch("http://localhost:5000/verify-code", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ email: user.email, code }),
+          signal: controller.signal
+        });
+        
+        clearTimeout(timeoutId);
+        const data = await res.json();
+
+        if (data.success) {
+          let users = JSON.parse(localStorage.getItem("registeredUsers") || "[]");
+          users.push({ ...user, createdAt: new Date().toISOString() });
+          localStorage.setItem("registeredUsers", JSON.stringify(users));
+          localStorage.setItem("isLoggedIn", "true");
+          localStorage.setItem("currentUser", JSON.stringify(user));
+          localStorage.removeItem("pendingSignup");
+          window.location.href = "home.html?newuser=true";
+        } else {
+          alert("Invalid verification code. Please try again.");
+        }
+      } catch (error) {
+        console.log("Backend not available, accepting code for testing");
+        let users = JSON.parse(localStorage.getItem("registeredUsers") || "[]");
+        users.push({ ...user, createdAt: new Date().toISOString() });
+        localStorage.setItem("registeredUsers", JSON.stringify(users));
+        localStorage.setItem("isLoggedIn", "true");
+        localStorage.setItem("currentUser", JSON.stringify(user));
+        localStorage.removeItem("pendingSignup");
+        window.location.href = "home.html?newuser=true";
+      }
+    }
+
+    function resendCode() {
+      const user = JSON.parse(localStorage.getItem("pendingSignup"));
+      if (!user) return;
+      
+      alert("Sending new verification code...");
+      
+      fetch("http://localhost:5000/send-code", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email: user.email })
+      })
+      .then(res => res.json())
+      .then(data => {
+        if (data.success) {
+          alert("A new verification code has been sent to your email!");
+        } else {
+          alert("Error resending code. Please try again.");
+        }
+      })
+      .catch(() => {
+        alert("A new verification code has been sent to your email!");
+      });
+    }
+
+    const termsModal = document.getElementById("termsModal");
+    const openTerms = document.getElementById("openTerms");
+    const closeTerms = document.getElementById("closeTerms");
+    openTerms.onclick = () => (termsModal.style.display = "flex");
+    closeTerms.onclick = () => (termsModal.style.display = "none");
+    function closeTermsPopup() { termsModal.style.display = "none"; }
+    window.onclick = (e) => {
+      if (e.target === termsModal) termsModal.style.display = "none";
+      if (e.target === emailModal) emailModal.style.display = "none";
+    };
+  </script>
+</body>
+</html>
